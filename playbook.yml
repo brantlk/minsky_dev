@@ -1,0 +1,54 @@
+---
+- hosts: all
+  tasks:
+  - name: hpcoder1 key
+    become: true
+    apt_key:
+      url: http://download.opensuse.org/repositories/home:hpcoder1/xUbuntu_14.04/Release.key
+      id: 8CDCDC645212DBE9E37EA3105606C8D03F9E5FB8
+  - name: hpcoder1 repository
+    become: true
+    apt_repository:
+      repo: deb http://download.opensuse.org/repositories/home:/hpcoder1/xUbuntu_14.04/ /
+      filename: hpcoders.list
+  - name: install binary packages
+    become: true
+    apt: name={{ item }}
+    with_items:
+    - tcl-dev
+    - tk-dev
+    - libcairo2-dev
+    - zlib1g-dev
+    - libreadline-dev
+    - libgsl0-dev
+    - libpango1.0-dev
+    - exuberant-ctags
+    - libdb-dev
+    - libncurses5-dev
+    - tktable
+    - librsvg2-dev
+    - json-spirit
+    - libboost-dev
+    - libboost-system-dev
+    - libboost-regex-dev
+    - libboost-date-time-dev
+    - libboost-program-options-dev
+    - libboost-filesystem-dev
+    - libboost-thread-dev
+    - libboost-signals-dev
+    - libsoci
+    - libsoci-dev
+    - libunittest++-dev
+    - linkchecker
+    - csvprintf
+    - libxml2-utils
+    - octave
+    - texlive
+    - latex2html
+    - perl
+    - git
+    - postgresql
+    - postgresql-contrib
+    - libxml2-dev
+    - libtiff-dev
+    - xvfb
